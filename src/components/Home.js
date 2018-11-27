@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import 'typeface-roboto';
 
 class Home extends Component {
 
   render() {
     return (
       <div id='home'>
-      <h1>WELCOME!</h1>
+      <h1>Welcome!</h1>
       </div>
     )
   }

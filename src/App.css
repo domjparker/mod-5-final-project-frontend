@@ -33,16 +33,49 @@
 
 
 #app-container {
-  width: 500px;
+  background-color: white;
+  max-width: 500px;
+  height: 100vh;
   display: flex;
   margin: 0 auto;
   flex-direction: column;
+  position: relative;
 }
 
 #nav-bar {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
 }
 
 #profile-container {
   width: 100%;
+}
+
+#profile-header {
+  width: 100%;
+  height: 20%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1rem;
+}
+
+#profile-header-img {
+  width: 100%;
+  height: 100%;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#profile-header-content {
+  width: 100%;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#avatar {
+  width: 100%;
+  height: 100%;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ProfileHeader from './ProfileHeader'
 import ProfileBody from './ProfileBody'
-import { Redirect, Link, withRouter} from 'react-router-dom'
+import { Redirect, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class ProfileContainer extends Component {
