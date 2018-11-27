@@ -30,3 +30,19 @@
     transform: rotate(360deg);
   }
 }
+
+
+#app-container {
+  width: 500px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+#nav-bar {
+  width: 100%;
+}
+
+#profile-container {
+  width: 100%;
+}
