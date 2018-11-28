@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import Avatar from '@material-ui/core/Avatar'
+import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { removeCurrentUser } from '../store'
 
 class ProfileHeader extends Component {
+
+  handleLogout = () => {
+    localStorage.removeItem("token")
+    this.props.logoutUser()
+    this.props.history.push("/")
+  }
 
   render() {
     return (
@@ -13,6 +22,7 @@ class ProfileHeader extends Component {
         <div id='profile-header-content'>
           <h3>{this.props.currentUser.name}</h3>
           <h4>Bio</h4>
+          <Button onClick={this.handleLogout} variant="outlined" color="primary">Logout</Button>
         </div>
 
       </div>
@@ -26,6 +36,11 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logoutUser: () => dispatch(removeCurrentUser())
+  }
+}
 
 
-export default connect(mapStateToProps)(ProfileHeader)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProfileHeader))

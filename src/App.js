@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './App.css';
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import LoginForm from './components/LoginForm'
@@ -29,12 +29,15 @@ class App extends Component {
   }
 
   renderProfile = () => {
-    return (
-      <ProfileContainer />
-    )
+      if(localStorage.getItem('token')) {
+        return <ProfileContainer />
+      }
+      else {
+        return <Redirect to='/login' />
+      }
   }
 
-  renderPhotForm = () => {
+  renderPhotoForm = () => {
     return (
       <PhotoForm />
     )
