@@ -10,6 +10,9 @@ const authReducer = (state = initialState, action) => {
     case ('REMOVE_CURRENTUSER'): {
       return {...state, currentUser: {}}
     }
+    case ('ADD_PHOTO'): {
+      return {...state, currentUser: {...state.currentUser, photos: [...state.currentUser.photos, action.payload]}}
+    }
     default:
       return state
   }

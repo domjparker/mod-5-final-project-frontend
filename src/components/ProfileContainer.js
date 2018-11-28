@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 class ProfileContainer extends Component {
 
   checkForUser = () => {
-    if (!this.props.currentUser.id) {
+    if (!localStorage.getItem('token')) {
       return <Redirect to='/login' />
     }
   }

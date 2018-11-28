@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 // import MenuItem from '@material-ui/core/MenuItem';
 // import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
+import { postPhoto } from '../store'
+
 // import CloudinaryWidget from '../CloudinaryWidget'
 
 // const styles = theme => ({
@@ -83,13 +85,14 @@ class PhotoForm extends Component {
   }
 
   showWidget = (widget) => {
-    console.log('SHOWING WIDGET!');
     widget.open()
   }
 
   checkUploadResult = (resultEvent) => {
     if (resultEvent.event === 'success') {
-      console.log(resultEvent.info.secure_url);
+      console.log(this.props.currentUser.id);
+      this.props.postPhoto({user_id: this.props.currentUser.id, caption: '', url: resultEvent.info.secure_url})
+      .then(this.props.history.push(`/profile`))
     }
   }
 
@@ -122,7 +125,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    postPhoto: (user, photo) => dispatch(postPhoto(user, photo))
   }
 }
 

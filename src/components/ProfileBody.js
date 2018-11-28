@@ -14,7 +14,6 @@ class ProfileBody extends Component {
   }
 
   render() {
-    console.log(this.props.currentUser);
     return (
       <div id='profile-body'>
       {this.props.currentUser && this.getPhotoCards()}
