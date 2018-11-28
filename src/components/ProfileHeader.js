@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import Avatar from '@material-ui/core/Avatar'
-import Card from '@material-ui/core/Grid'
 import { connect } from 'react-redux'
 
 class ProfileHeader extends Component {
 
   render() {
     return (
-      <Card id='profile-header'>
+      <div id='profile-header'>
         <div id='profile-header-img'>
           <Avatar alt="current-user-avatar" src="https://pbs.twimg.com/profile_images/733186212177936388/Ke3m8oMt_400x400.jpg" id='avatar'/>
         </div>
@@ -16,7 +15,7 @@ class ProfileHeader extends Component {
           <h4>Bio</h4>
         </div>
 
-      </Card>
+      </div>
     )
   }
 }
