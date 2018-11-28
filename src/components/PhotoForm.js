@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Redirect, Link, withRouter} from 'react-router-dom'
+import { Redirect, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
+// import classNames from 'classnames';
+// import { withStyles } from '@material-ui/core/styles';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
+// import CloudinaryWidget from '../CloudinaryWidget'
 
 // const styles = theme => ({
 // container: {
@@ -81,14 +82,26 @@ class PhotoForm extends Component {
     }
   }
 
+  showWidget = (widget) => {
+    console.log('SHOWING WIDGET!');
+    widget.open()
+  }
+
+  checkUploadResult = (resultEvent) => {
+    if (resultEvent.event === 'success') {
+      console.log(resultEvent.info.secure_url);
+    }
+  }
+
+
 
   render() {
-    // const widget = cloudinary.createUploadWidget({ cloudName: "dnmpjwixe", uploadPreset: "tsdo8id4" }, (error, result) => { })
-    // widget.open()
+    let widget = window.cloudinary.createUploadWidget({ cloudName: "dnmpjwixe", uploadPreset: "tsdo8id4" }, (error, result) => { this.checkUploadResult(result) })
+
     return (
       <div id='photo-form-container'>
         <h2>Add New Photo</h2>
-        <Button variant="outlined" color="primary">Upload Photo</Button>
+        <Button onClick={() => this.showWidget(widget)} variant="outlined" color="primary">Upload Photo</Button>
         <form id='photo-form'>
           <input type="file" name="photo" placeholder="Photo"/>
           <br/>
