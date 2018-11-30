@@ -94,3 +94,26 @@
   max-width: 100%;
   max-height: 100%;
 }
+
+#photo-form {
+  max-width: 100%;
+}
+
+#photo-form-preview {
+  max-width: 100%
+}
+
+#upload-button-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+
+#upload-button-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}

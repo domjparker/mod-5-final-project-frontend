@@ -1,4 +1,6 @@
 // import { } from './adapter'
+const BASE_URL = '10.39.110.47:3000/'
+// const BASE_URL = 'http://localhost:3000/'
 
 /* ---------- ACTION CREATORS ------------- */
 // const editHobbit = (hobbit) => ({ type: 'EDIT_HOBBIT', payload: hobbit})
@@ -28,7 +30,7 @@ export const removeCurrentUser = () => ({ type: 'REMOVE_CURRENTUSER'})
 
 export const loginUser = (username, password) => {
   return (dispatch) => {
-    return fetch("http://localhost:3000/login", {
+    return fetch(`${BASE_URL}login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +54,7 @@ export const loginUser = (username, password) => {
 
 export const loadCurrentUser = (token) => {
   return (dispatch) => {
-    return fetch('http://localhost:3000/profile', {
+    return fetch(`${BASE_URL}profile`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -64,7 +66,7 @@ export const loadCurrentUser = (token) => {
 
 export const createUser = (user) => {
   return (dispatch) => {
-    return fetch("http://localhost:3000/users", {
+    return fetch(`${BASE_URL}users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
