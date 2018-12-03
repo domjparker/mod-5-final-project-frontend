@@ -7,6 +7,8 @@ import Home from './components/Home'
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
 import ProfileContainer from './components/ProfileContainer'
+import PhotoContainer from './components/PhotoContainer'
+import SearchContainer from './components/SearchContainer'
 import PhotoForm from './components/PhotoForm'
 import { loadCurrentUser } from './store'
 
@@ -24,7 +26,7 @@ class App extends Component {
   }
   renderUser = () => {
     return (
-      <div>USERFEED</div>
+      <ProfileContainer />
     )
   }
 
@@ -43,6 +45,18 @@ class App extends Component {
     )
   }
 
+  renderPhotoShow = (props) => {
+    return (
+      <PhotoContainer photoId={props.match.params.id}/>
+    )
+  }
+
+  renderSearch = (props) => {
+    return (
+      <SearchContainer />
+    )
+  }
+
   componentDidMount() {
     const token = localStorage.getItem('token')
     if (token) {
@@ -57,7 +71,9 @@ class App extends Component {
           <Route path="/login" render={this.renderLogin}/>
           <Route path="/signup" render={this.renderSignup}/>
           <Route path="/profile" render={this.renderProfile}/>
+          <Route path="/search" render={this.renderSearch}/>
           <Route path="/photo/new" render={this.renderPhotoForm}/>
+          <Route path="/users/:id/photos/:id" render={this.renderPhotoShow}/>
           <Route path="/users" render={this.renderUser}/>
           <Route path="/" component={Home}/>
         </Switch>
@@ -66,6 +82,7 @@ class App extends Component {
     );
   }
 }
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

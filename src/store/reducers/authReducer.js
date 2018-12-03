@@ -4,7 +4,7 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ('GET_CURRENTUSER'): {
+    case ('SET_CURRENTUSER'): {
       return {...state, currentUser: action.payload}
     }
     case ('REMOVE_CURRENTUSER'): {

@@ -20,7 +20,7 @@ class ProfileHeader extends Component {
           <Avatar alt="current-user-avatar" src="https://pbs.twimg.com/profile_images/733186212177936388/Ke3m8oMt_400x400.jpg" id='avatar'/>
         </div>
         <div id='profile-header-content'>
-          <h3>{this.props.currentUser.name}</h3>
+          <h3>{this.props.user && this.props.user.name}</h3>
           <h4>Bio</h4>
           <Button onClick={this.handleLogout} variant="outlined" color="primary">Logout</Button>
         </div>
@@ -30,11 +30,11 @@ class ProfileHeader extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.auth.currentUser
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     currentUser: state.auth.currentUser
+//   }
+// }
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -43,4 +43,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProfileHeader))
+export default withRouter(connect(null, mapDispatchToProps)(ProfileHeader))

@@ -1,10 +1,10 @@
 // import { } from './adapter'
-const BASE_URL = '10.39.110.47:3000/'
-// const BASE_URL = 'http://localhost:3000/'
+// const BASE_URL = '10.39.110.47:3000/'
+const BASE_URL = 'http://localhost:3000'
 
 /* ---------- ACTION CREATORS ------------- */
 // const editHobbit = (hobbit) => ({ type: 'EDIT_HOBBIT', payload: hobbit})
-const getCurrentUser = (user) => ({ type: 'GET_CURRENTUSER', payload: user })
+const getCurrentUser = (user) => ({ type: 'SET_CURRENTUSER', payload: user })
 export const removeCurrentUser = () => ({ type: 'REMOVE_CURRENTUSER'})
 // export const selectHobbit = (hobbit) => ({type: 'SELECT_HOBBIT', payload: hobbit})
 
@@ -30,7 +30,7 @@ export const removeCurrentUser = () => ({ type: 'REMOVE_CURRENTUSER'})
 
 export const loginUser = (username, password) => {
   return (dispatch) => {
-    return fetch(`${BASE_URL}login`, {
+    return fetch(`${BASE_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export const loginUser = (username, password) => {
 
 export const loadCurrentUser = (token) => {
   return (dispatch) => {
-    return fetch(`${BASE_URL}profile`, {
+    return fetch(`${BASE_URL}/profile`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -66,7 +66,7 @@ export const loadCurrentUser = (token) => {
 
 export const createUser = (user) => {
   return (dispatch) => {
-    return fetch(`${BASE_URL}users`, {
+    return fetch(`${BASE_URL}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

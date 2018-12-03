@@ -100,7 +100,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    postPhoto: (user, photo) => dispatch(postPhoto(user, photo))
+    postPhoto: (photo) => dispatch(postPhoto(photo))
   }
 }
 
