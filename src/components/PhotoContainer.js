@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { loadSelectedPhotoAndUser } from '../store'
+import { loadSelectedPhotoAndUser, setSelectedPhoto } from '../store'
 
 class PhotoContainer extends Component {
 
   componentDidMount() {
-    this.props.loadSelectedPhotoAndUser(this.props.photoId)
+    //need to do a check to see if photo is in selectedUser.photos before going a fetch
+    const photo = (this.props.selectedUser.photos && this.props.selectedUser.photos.find(photo => photo.id === parseInt(this.props.photoId)))
+    if (photo) {
+      console.log('PHOTO WAS IN SELECTED USER', photo);
+      this.props.setSelectedPhoto(photo)
+    } else {
+      console.log('HAD TO FETCH PHOTO');
+      this.props.loadSelectedPhotoAndUser(this.props.photoId)
+    }
   }
 
   render() {
@@ -27,7 +35,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadSelectedPhotoAndUser: (userId) => dispatch(loadSelectedPhotoAndUser(userId))
+    loadSelectedPhotoAndUser: (userId) => dispatch(loadSelectedPhotoAndUser(userId)),
+    setSelectedPhoto: (photo) => dispatch(setSelectedPhoto(photo))
   }
 }
 

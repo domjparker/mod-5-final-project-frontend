@@ -16,6 +16,9 @@ const photosReducer = (state = initialState, action) => {
     case ('SET_SELECTED_PHOTO_AND_USER'): {
       return {...state, selectedUser: action.payload.user, selectedPhoto: action.payload.photo}
     }
+    case ('SET_SELECTED_PHOTO'): {
+      return {...state, selectedPhoto: action.payload}
+    }
     default:
       return state
   }

@@ -5,6 +5,7 @@ const BASE_URL = 'http://localhost:3000'
 /* ---------- ACTION CREATORS ------------- */
 // const editHobbit = (hobbit) => ({ type: 'EDIT_HOBBIT', payload: hobbit})
 const getCurrentUser = (user) => ({ type: 'SET_CURRENTUSER', payload: user })
+const setAllUser = (users) => ({ type: 'SET_ALLUSERS', payload: users })
 export const removeCurrentUser = () => ({ type: 'REMOVE_CURRENTUSER'})
 // export const selectHobbit = (hobbit) => ({type: 'SELECT_HOBBIT', payload: hobbit})
 
@@ -81,5 +82,13 @@ export const createUser = (user) => {
         localStorage.setItem("token", r.jwt)
         dispatch(getCurrentUser(r.user))
       })
+  }
+}
+
+export const getAllUsers = (token) => {
+  return (dispatch) => {
+    return fetch(`${BASE_URL}/users`)
+      .then(r => r.json())
+      .then(users => {dispatch(setAllUser(users))})
   }
 }

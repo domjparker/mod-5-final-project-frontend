@@ -7,7 +7,8 @@ const BASE_URL = 'http://localhost:3000'
 const setCurrentUserPhotos = (photos) => ({ type: 'SET_CURRENTUSER_PHOTOS', payload: photos })
 const setUserProfile = (user) => ({ type: 'SET_USER_PROFILE', payload: user })
 const addPhoto = (photo) => ({ type: 'ADD_PHOTO', payload: photo })
-const setSelectedPhoto = (photoAndUser) => ({ type: 'SET_SELECTED_PHOTO_AND_USER', payload: photoAndUser })
+const setSelectedPhotoAndUser = (photoAndUser) => ({ type: 'SET_SELECTED_PHOTO_AND_USER', payload: photoAndUser })
+export const setSelectedPhoto = (photo) => ({ type: 'SET_SELECTED_PHOTO', payload: photo })
 // export const selectHobbit = (hobbit) => ({type: 'SELECT_HOBBIT', payload: hobbit})
 
 
@@ -57,7 +58,7 @@ export const loadSelectedPhotoAndUser = (photoId) => {
   return (dispatch) => {
     return fetch(`${BASE_URL}/photos/${photoId}`)
     .then(r => r.json())
-    .then(photoAndUser => dispatch(setSelectedPhoto(photoAndUser)))
+    .then(photoAndUser => dispatch(setSelectedPhotoAndUser(photoAndUser)))
     .catch(console.error)
   }
 }

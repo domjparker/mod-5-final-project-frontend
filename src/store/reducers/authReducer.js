@@ -1,5 +1,6 @@
 const initialState = {
-  currentUser: {}
+  currentUser: {},
+  allUsers: []
 }
 
 const authReducer = (state = initialState, action) => {
@@ -12,6 +13,9 @@ const authReducer = (state = initialState, action) => {
     }
     case ('ADD_PHOTO'): {
       return {...state, currentUser: {...state.currentUser, photos: [...state.currentUser.photos, action.payload]}}
+    }
+    case ('SET_ALLUSERS'): {
+      return {...state, allUsers: action.payload}
     }
     default:
       return state
