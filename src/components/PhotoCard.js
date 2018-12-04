@@ -10,7 +10,7 @@ class PhotoCard extends Component {
   render() {
     return (
       <div onClick={this.handleClick} className='photo-card'>
-      <img alt={this.props.photoObj.caption} src={this.props.photoObj.url} />
+        <img alt={this.props.photoObj.caption} src={this.props.photoObj.url} />
       </div>
     )
   }
