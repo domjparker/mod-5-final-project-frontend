@@ -2,8 +2,16 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loadSelectedPhotoAndUser, setSelectedPhoto } from '../store'
+import AnnotationCard from './AnnotationCard'
 
 class PhotoContainer extends Component {
+
+  showAnnotations  = () => {
+    let annotationCards = this.props.selectedPhoto.annotations.map(annotation => <AnnotationCard key={annotation.id} annotationObj={annotation}/>)
+    return(
+      annotationCards
+    )
+  }
 
   componentDidMount() {
     //need to do a check to see if photo is in selectedUser.photos before going a fetch
@@ -19,8 +27,11 @@ class PhotoContainer extends Component {
 
   render() {
     return (
-      <div id='photo-container'>
+      <div className='photo-container'>
         <img className='photo-show' src={this.props.selectedPhoto.url} alt={this.props.selectedPhoto.caption}/>
+        <div className='annotations-container'>
+        {this.props.selectedPhoto.annotations && this.showAnnotations()}
+        </div>
       </div>
     )
   }
