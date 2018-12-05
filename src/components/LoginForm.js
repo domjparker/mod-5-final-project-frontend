@@ -13,8 +13,8 @@ class LoginForm extends Component {
 
   handleLogin = (e) => {
     e.preventDefault()
-    this.props.loginUser(e.target.username.value, e.target.password.value)
-    .then(this.props.history.push(`/profile`))
+    this.props.loginUser(this.state.username.toLowerCase(), this.state.password)
+    .then(this.props.history.push('/profile'))
 
   }
 
@@ -26,7 +26,7 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div id='login-form'>
+      <div id='login-container'>
         <form onSubmit={this.handleLogin} id="login-form">
           <input onChange={this.handleChange} type="text" name="username" placeholder="Username"/>
           <input onChange={this.handleChange} type="password" name="password" placeholder="Password"/>

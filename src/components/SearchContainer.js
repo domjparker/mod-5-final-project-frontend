@@ -30,18 +30,20 @@ class SearchContainer extends Component {
   render() {
     return (
       <div id='search-container'>
-      <TextField
-        onChange={this.handleChange}
-        id="outlined-search-input"
-        label="Search"
-        className='text-field'
-        type="search"
-        name="search"
-        autoComplete="search"
-        margin="normal"
-        variant="outlined"
-      />
-      {this.state.search && this.loadProfileSnippets()}
+        <TextField
+          onChange={this.handleChange}
+          id="outlined-search-input"
+          label="Search"
+          className='text-field'
+          type="search"
+          name="search"
+          autoComplete="search"
+          margin="normal"
+          variant="outlined"
+        />
+        <div id='search-results'>
+          {this.state.search && this.loadProfileSnippets()}
+        </div>
       </div>
     )
   }
