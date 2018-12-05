@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import './App.css';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 import NavBar from './components/NavBar'
+import AppHeader from './components/AppHeader'
 import Home from './components/Home'
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
@@ -67,6 +68,7 @@ class App extends Component {
   render() {
     return (
       <div id='app-container'>
+        <AppHeader />
         <Switch>
           <Route path="/login" render={this.renderLogin}/>
           <Route path="/signup" render={this.renderSignup}/>

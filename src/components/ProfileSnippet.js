@@ -11,7 +11,7 @@ class ProfileSnippet extends Component {
   render() {
     return (
       <div id='profile-snippet' onClick={() => this.handleClick(this.props.user)}>
-          <img alt="current-user-avatar" src="https://pbs.twimg.com/profile_images/733186212177936388/Ke3m8oMt_400x400.jpg" id='profile-snippet-img'/>
+          <img alt="current-user-avatar" src={this.props.user.profile_photo} id='profile-snippet-img'/>
         <div id='profile-snippet-content'>
           {this.props.user.name}
         </div>

@@ -15,11 +15,14 @@ class ProfileHeader extends Component {
   render() {
     return (
       <div id='profile-header'>
-        <img alt="current-user-avatar" src="https://pbs.twimg.com/profile_images/733186212177936388/Ke3m8oMt_400x400.jpg" id='profile-header-img'/>
-        <div id='profile-header-content'>
-          <h3>{this.props.user && this.props.user.name}</h3>
-          <h4>Bio</h4>
+        <div id='profile-header-left'>
+          <img alt="current-user-avatar" src={this.props.user.profile_photo} />
+        </div>
+        <div id='profile-header-right'>
+          <div id='profile-header-content'>
+          <p>{this.props.user && this.props.user.name}</p>
           <Button onClick={this.handleLogout} variant="outlined" color="primary">Logout</Button>
+          </div>
         </div>
 
       </div>

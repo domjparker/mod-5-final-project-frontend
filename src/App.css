@@ -31,48 +31,91 @@
   }
 }
 
+#app-header {
+  max-width: 100%;
+  height: 4vh;
+  background-color: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-row: 1 / 2;
+}
+
 
 #app-container {
   background-color: white;
-  max-width: 40vw;
+  max-width: 32vw;
   height: 100vh;
-  display: flex;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 4vh 88vh 8vh;
+  /* display: flex; */
   margin: 0 auto;
-  flex-direction: column;
+  /* flex-direction: column; */
   position: relative;
 }
 
-#nav-bar {
+#nav-bar-container {
+  max-height: 100%;
   width: 100%;
+  grid-row: 3 / 4;
+  overflow: hidden;
   display: flex;
-  position: absolute;
-  bottom: 0;
+  justify-content: center;
+  align-items: flex-end;
+  /* position: absolute;
+  bottom: 0; */
+}
+
+#nav-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#nav-bar-div {
+    width: 100%;
 }
 
 #profile-container {
   max-width: 100%;
+  max-height: 89vh;
+  grid-row: 2 / 3;
 }
 
 #profile-header {
   width: 100%;
+  height: 18vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100%;
 }
 
-#profile-header-img {
+#profile-header-left {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 18vh;
   grid-column-start: 1;
   grid-column-end: 2;
-  margin: 5%;
+  margin: 2%;
+}
+
+#profile-header-left img {
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 50%;
+}
+
+#profile-header-right {
+  max-width: 100%;
+  max-height: 18vh;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  /* margin: 4%; */
 }
 
 #profile-header-content {
   max-width: 100%;
-  grid-column-start: 2;
-  grid-column-end: 4;
-  margin: 4%;
+  max-height: 100%;
 }
 
 #avatar {
@@ -82,17 +125,22 @@
 
 #profile-body {
   max-width: 100%;
+  height: 70vh;
   display: flex;
   flex-flow: row wrap;
+  overflow-y: auto;
+  align-content: flex-start;
+  /* float: center;
+  position: relative; */
 }
 
 
 .photo-card {
-  width: 13vw;
-  height: 13vw;
+  width: 10.25vw;
+  height: 10.25vw;
   display: flex;
   overflow: hidden;
-  margin: 2px;
+  margin: 0.2vw;
 }
 
 
@@ -167,7 +215,8 @@
     }
 
     .photo-card {
-      width: 32.25vw;
-      height: 32.25vw;
+      width: 32.8vw;
+      height: 32.8vw;
+      margin: 0.2vw;
     }
 }
