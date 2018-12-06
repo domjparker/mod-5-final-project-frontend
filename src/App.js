@@ -25,9 +25,9 @@ class App extends Component {
       <SignUpForm />
     )
   }
-  renderUser = () => {
+  renderUser = (props) => {
     return (
-      <ProfileContainer />
+      <ProfileContainer userId={props.match.params.id}/>
     )
   }
 
@@ -72,7 +72,6 @@ class App extends Component {
         <Switch>
           <Route path="/login" render={this.renderLogin}/>
           <Route path="/signup" render={this.renderSignup}/>
-          <Route path="/profile" render={this.renderProfile}/>
           <Route path="/search" render={this.renderSearch}/>
           <Route path="/photo/new" render={this.renderPhotoForm}/>
           <Route path="/users/:id/photos/:id" render={this.renderPhotoShow}/>

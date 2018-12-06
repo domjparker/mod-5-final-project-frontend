@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 class AnnotationCard extends Component {
 
   render() {
-    console.log(this.props.annotationObj);
     return (
       <div className='annotation-card-div'>
         <Card className='annotation-card'>
@@ -29,7 +28,7 @@ class AnnotationCard extends Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">See More</Button>
+            <a href={this.props.annotationObj.url} target="_blank" rel="noopener noreferrer"><Button size="small">See More</Button></a>
           </CardActions>
         </Card>
       </div>

@@ -53,8 +53,8 @@ class NavBar extends Component {
             <BottomNavigationAction onClick={(e) => this.handleClick(e, '/')} label="Home" value="home" icon={<HomeIcon />} />
             <BottomNavigationAction onClick={(e) => this.handleClick(e, '/search')} label="Search" value="search" icon={<SearchIcon />} />
             <BottomNavigationAction onClick={(e) => this.handleClick(e, '/photo/new')} label="Photo" value="addphoto" icon={<AddBoxIcon />} />
-            <BottomNavigationAction onClick={(e) => this.handleClick(e, '/login')} label="Favorites" value="favorites" icon={<FavoriteIcon />} />
-            <BottomNavigationAction onClick={(e) => this.handleClick(e, '/profile')} label="Profile" value="profile" icon={<PersonIcon />} />
+            <BottomNavigationAction onClick={(e) => this.handleClick(e, '/users/likes')} label="Likes" value="likes" icon={<FavoriteIcon />} />
+            <BottomNavigationAction onClick={(e) => this.handleClick(e, '/users/profile')} label="Profile" value="profile" icon={<PersonIcon />} />
           </BottomNavigation>
         </div>
       </div>

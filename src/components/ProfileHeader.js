@@ -9,14 +9,14 @@ class ProfileHeader extends Component {
   handleLogout = () => {
     localStorage.removeItem("token")
     this.props.logoutUser()
-    this.props.history.push("/")
+    this.props.history.push(`/login`)
   }
 
   render() {
     return (
       <div id='profile-header'>
         <div id='profile-header-left'>
-          <img alt="current-user-avatar" src={this.props.user.profile_photo} />
+          <img alt="current-user-avatar" src={this.props.user && this.props.user.profile_photo} />
         </div>
         <div id='profile-header-right'>
           <div id='profile-header-content'>

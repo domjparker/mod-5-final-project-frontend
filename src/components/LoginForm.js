@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Link, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
-
 import { loginUser } from '../store'
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography';
 
 class LoginForm extends Component {
 
@@ -14,7 +16,7 @@ class LoginForm extends Component {
   handleLogin = (e) => {
     e.preventDefault()
     this.props.loginUser(this.state.username.toLowerCase(), this.state.password)
-    .then(this.props.history.push('/profile'))
+    .then(this.props.history.push(`/users/profile`))
 
   }
 
@@ -27,12 +29,28 @@ class LoginForm extends Component {
   render() {
     return (
       <div id='login-container'>
-        <form onSubmit={this.handleLogin} id="login-form">
-          <input onChange={this.handleChange} type="text" name="username" placeholder="Username"/>
-          <input onChange={this.handleChange} type="password" name="password" placeholder="Password"/>
-          <button>Login</button>
+        <form id="login-form">
+          <TextField onChange={this.handleChange} type="text" name="username"
+          id="outlined-login-username-input"
+          label="Username"
+          className='text-field'
+          margin="normal"
+          variant="outlined"/>
+          <TextField onChange={this.handleChange} type="password" name="password"
+          id="outlined-login-password-input"
+          label="Pasword"
+          className='text-field'
+          margin="normal"
+          variant="outlined"/>
+          <br />
+          <Button onClick={this.handleLogin} variant="outlined" color="primary">Login</Button>
         </form>
-        <Link to='/signup'>New User?</Link>
+        <br />
+        <Link to='/signup'>
+        <Typography variant="h6">
+          New User?
+        </Typography>
+        </Link>
       </div>
     )
   }

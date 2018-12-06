@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ProfileHeader from './ProfileHeader'
 import ProfileBody from './ProfileBody'
-import { Redirect, withRouter, Switch, Route} from 'react-router-dom'
+import PhotoContainer from './PhotoContainer'
+import { withRouter, Switch, Route} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loadSelectedUser } from '../store'
 
@@ -9,26 +10,34 @@ import { loadSelectedUser } from '../store'
 
 class ProfileContainer extends Component {
 
+  state={
+    selectUserId: '',
+    loadedSelectedUser: false
+  }
 
 
   checkForUser = () => {
     if (!localStorage.getItem('token')) {
-      return <Redirect to='/login' />
+      this.props.history.push('/login')
+      return false
+    } else {
+      return true
+    }
+
+  }
+
+  getSelectedUser = (userId) => {
+    if (!this.state.loadedSelectedUser) {
+      this.props.loadSelectedUser(parseInt(userId))
+      this.setState({loadedSelectedUser: true})
     }
   }
 
-  componentDidMount() {
-    this.checkForUser()
-  }
-
-
-  renderProfile = (props) => {
-    const userId = parseInt(props.match.params.id)
-    this.props.loadSelectedUser(userId)
+  renderProfile = () => {
     return (
       <div id='profile-container'>
-        <ProfileHeader user={this.props.selectedUser}/>
-        <ProfileBody user={this.props.selectedUser}/>
+        <ProfileHeader user={this.props.selectedUser} isUser={false}/>
+        <ProfileBody user={this.props.selectedUser } isUser={false}/>
       </div>
     )
   }
@@ -36,10 +45,27 @@ class ProfileContainer extends Component {
   renderCurrentUserProfile = () => {
     return (
       <div id='profile-container'>
-        <ProfileHeader user={this.props.currentUser}/>
-        <ProfileBody user={this.props.currentUser}/>
+        <ProfileHeader user={this.props.currentUser} isUser={true}/>
+        <ProfileBody user={this.props.currentUser} isUser={true}/>
       </div>
     )
+  }
+
+  renderCurrentUserLikes = () => {
+    let photoCards = this.props.currentUser.likes && this.props.currentUser.likes.map(like => {
+      return <PhotoContainer key={like.photo_id} photoId={like.photo_id}/>
+    })
+    return (
+      <div id='likes-container'>
+        {photoCards}
+      </div>
+    )
+  }
+
+
+  componentDidMount(){
+      this.checkForUser()
+      this.props.userId && this.getSelectedUser(this.props.userId)
   }
 
 
@@ -47,8 +73,9 @@ class ProfileContainer extends Component {
   render() {
     return (
       <Switch>
+        <Route path="/users/likes" render={this.renderCurrentUserLikes}/>
+        <Route path="/users/profile" render={this.renderCurrentUserProfile}/>
         <Route path="/users/:id" render={this.renderProfile}/>
-        <Route path="/profile" render={this.renderCurrentUserProfile}/>
       </Switch>
     )
   }
@@ -57,7 +84,8 @@ class ProfileContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.auth.currentUser,
-    selectedUser: state.photos.selectedUser
+    selectedUser: state.photos.selectedUser,
+    allUsers: state.auth.allUsers
   }
 }
 

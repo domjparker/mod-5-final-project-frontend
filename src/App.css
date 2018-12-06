@@ -41,6 +41,11 @@
   grid-row: 1 / 2;
 }
 
+#app-header h1 {
+  font-style: italic;
+  color: white;
+  text-shadow: 2px 1px #000000;
+}
 
 #app-container {
   background-color: white;
@@ -82,7 +87,14 @@
   max-height: 89vh;
   grid-row: 2 / 3;
   display: flex;
-  justify-content: center;
+  flex-flow: row wrap;
+  overflow-y: auto;
+  align-content: flex-start;
+}
+
+#home-container h1 {
+  text-align: center;
+  width: 100%;
 }
 
 #login-container {
@@ -90,7 +102,17 @@
   max-height: 89vh;
   grid-row: 2 / 3;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  overflow-y: auto;
+  padding-top: 20vh;
+}
+
+#login-form {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap;
 }
 
 #signup-container {
@@ -98,7 +120,70 @@
   max-height: 89vh;
   grid-row: 2 / 3;
   display: flex;
+  align-items: center;
+  flex-flow: column wrap;
+  overflow-y: auto;
+  padding-top: 5vh;
+}
+
+#signup-form {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap;
+}
+
+#photo-form-container {
+  max-width: 100%;
+  max-height: 89vh;
+  grid-row: 2 / 3;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 1vh;
+}
+
+
+#photo-form-div {
+  width: 100%;
+  max-height: 100%;
+  /* display: flex; */
   justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  overflow-y: auto;
+}
+
+#photo-form {
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+#photo-form-preview-div {
+  max-width: 100%;
+}
+
+#photo-form-preview {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#upload-button-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+
+#upload-button-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
 
 #profile-container {
@@ -159,6 +244,18 @@
   position: relative; */
 }
 
+#likes-container {
+  max-width: 100%;
+  max-height: 89vh;
+  grid-row: 2 / 3;
+  display: flex;
+  flex-flow: row wrap;
+  overflow-y: auto;
+  align-content: flex-start;
+  /* float: center;
+  position: relative; */
+}
+
 
 .photo-card {
   width: 10.25vw;
@@ -175,28 +272,7 @@
   object-fit: cover;
 }
 
-#photo-form {
-  max-width: 100%;
-}
 
-#photo-form-preview {
-  max-width: 100%
-}
-
-#upload-button-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
-
-
-#upload-button-wrapper input[type=file] {
-  font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
 
 .photo-show {
   max-width: 100%;
@@ -249,6 +325,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  overflow-y: auto;
   padding: 1em;
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TextField from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getAllUsers } from '../store'
@@ -18,8 +18,8 @@ class SearchContainer extends Component {
   }
 
   loadProfileSnippets = () => {
-    const users = this.props.allUsers.filter(user => (user.name.includes(this.state.search) || user.username.includes(this.state.search)))
-    return users.map(user => <ProfileSnippet key={user.id} user={user}/>)
+      const users = this.props.allUsers.filter(user => (user.name.includes(this.state.search) || user.username.includes(this.state.search)))
+      return users.map(user => <ProfileSnippet key={user.id} user={user}/>)
   }
 
   componentDidMount() {
