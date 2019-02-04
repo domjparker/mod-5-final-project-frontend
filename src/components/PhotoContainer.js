@@ -26,6 +26,7 @@ class PhotoContainer extends Component {
   }
 
   render() {
+    console.log(this.props.selectedPhoto);
     return (
       <div className='photo-container'>
         <img className='photo-show' src={this.props.selectedPhoto.url} alt={this.props.selectedPhoto.caption}/>

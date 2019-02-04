@@ -15,9 +15,9 @@ class LoginForm extends Component {
 
   handleLogin = (e) => {
     e.preventDefault()
+    console.log(this.props.history);
     this.props.loginUser(this.state.username.toLowerCase(), this.state.password)
-    .then(this.props.history.push(`/users/profile`))
-
+    // .then(this.props.history.push('/users/profile'))
   }
 
   handleChange = (e) => {
@@ -26,7 +26,18 @@ class LoginForm extends Component {
     this.setState(change)
   }
 
+  checkForUser = () => {
+    if (localStorage.getItem('token')) {
+      this.props.history.push('/users/profile')
+    }
+  }
+
+  componentDidUpdate(){
+      this.checkForUser()
+  }
+
   render() {
+    console.log(this.props.match);
     return (
       <div id='login-container'>
         <form id="login-form">
@@ -69,4 +80,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));

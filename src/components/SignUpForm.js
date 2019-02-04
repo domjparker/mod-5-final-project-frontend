@@ -51,6 +51,17 @@ class SignUp extends Component {
     })
   }
 
+  checkForUser = () => {
+    if (localStorage.getItem('token')) {
+      this.props.history.push('/users/profile')
+    }
+  }
+
+  componentDidUpdate(){
+      this.checkForUser()
+  }
+
+
   render() {
     return (
       <div id='signup-container'>
