@@ -22,7 +22,7 @@ class ProfileHeader extends Component {
         <div id='profile-header-right'>
           <div id='profile-header-content'>
           <p>{this.props.user && this.props.user.name}</p>
-          <p>Followers: {this.props.user.followers && this.props.user.followers.length} | Following: {this.props.user.follows && this.props.user.follows.length}</p>
+          <p>{this.props.user.followers && `Followers: ${this.props.user.followers.length} | Following: ${this.props.user.follows.length}`}</p>
           <Button onClick={this.handleLogout} variant="outlined" color="primary">Logout</Button>
           </div>
         </div>
