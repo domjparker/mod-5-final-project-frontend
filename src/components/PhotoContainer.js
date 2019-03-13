@@ -33,6 +33,9 @@ class PhotoContainer extends Component {
     return (
       <div className='photo-container'>
         <img className='photo-show' src={this.props.selectedPhoto.url} alt={this.props.selectedPhoto.caption}/>
+        <div className='photo-info-container'>
+        <p>{this.props.selectedPhoto.likes && `${this.props.selectedPhoto.likes.length} Likes`}</p>
+        </div>
         <div className='annotations-container'>
         {this.props.selectedPhoto.annotations && this.showAnnotations()}
         </div>
