@@ -15,18 +15,21 @@ class PhotoContainer extends Component {
 
   componentDidMount() {
     //need to do a check to see if photo is in selectedUser.photos before going a fetch
-    const photo = (this.props.selectedUser.photos && this.props.selectedUser.photos.find(photo => photo.id === parseInt(this.props.photoId)))
-    if (photo) {
-      // console.log('PHOTO WAS IN SELECTED USER', photo);
-      this.props.setSelectedPhoto(photo)
-    } else {
-      // console.log('HAD TO FETCH PHOTO');
-      this.props.loadSelectedPhotoAndUser(this.props.photoId)
-    }
+
+    // Commented out because the photos in the selected user do not have annotations so always need to load photo aka do a fetch
+    // const photo = (this.props.selectedUser.photos && this.props.selectedUser.photos.find(photo => photo.id === parseInt(this.props.photoId)))
+    // if (photo) {
+    //   console.log('PHOTO WAS IN SELECTED USER', photo);
+    //   this.props.setSelectedPhoto(photo)
+    // } else {
+    //   console.log('HAD TO FETCH PHOTO');
+    //   this.props.loadSelectedPhotoAndUser(this.props.photoId)
+    // }
+    this.props.loadSelectedPhotoAndUser(this.props.photoId)
   }
 
   render() {
-    console.log(this.props.selectedPhoto);
+    console.log('SELECTED PHOTO', this.props.selectedPhoto);
     return (
       <div className='photo-container'>
         <img className='photo-show' src={this.props.selectedPhoto.url} alt={this.props.selectedPhoto.caption}/>

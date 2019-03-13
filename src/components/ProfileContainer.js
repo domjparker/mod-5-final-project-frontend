@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ProfileHeader from './ProfileHeader'
 import ProfileBody from './ProfileBody'
 import PhotoContainer from './PhotoContainer'
+// import PhotoCard from './PhotoCard'
 import { withRouter, Switch, Route} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loadSelectedUser } from '../store'
@@ -52,6 +53,7 @@ class ProfileContainer extends Component {
   }
 
   renderCurrentUserLikes = () => {
+    console.log('Current User Likes', this.props.currentUser.likes);
     let photoCards = this.props.currentUser.likes && this.props.currentUser.likes.map(like => {
       return <PhotoContainer key={like.photo_id} photoId={like.photo_id}/>
     })
@@ -65,6 +67,7 @@ class ProfileContainer extends Component {
 
   componentDidMount(){
       this.checkForUser()
+      console.log('PATH NAME', this.props.location.pathname);
       this.props.userId && this.getSelectedUser(this.props.userId)
   }
 

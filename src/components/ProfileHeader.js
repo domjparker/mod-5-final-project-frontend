@@ -13,6 +13,7 @@ class ProfileHeader extends Component {
   }
 
   render() {
+    console.log(this.props.user)
     return (
       <div id='profile-header'>
         <div id='profile-header-left'>
@@ -21,6 +22,7 @@ class ProfileHeader extends Component {
         <div id='profile-header-right'>
           <div id='profile-header-content'>
           <p>{this.props.user && this.props.user.name}</p>
+          <p>{this.props.user.followers && this.props.user.followers.length} Followers</p>
           <Button onClick={this.handleLogout} variant="outlined" color="primary">Logout</Button>
           </div>
         </div>

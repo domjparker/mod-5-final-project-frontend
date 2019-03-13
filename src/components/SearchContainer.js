@@ -37,7 +37,7 @@ class SearchContainer extends Component {
           className='text-field'
           type="search"
           name="search"
-          autoComplete="search"
+          autoComplete="off"
           margin="normal"
           variant="outlined"
         />

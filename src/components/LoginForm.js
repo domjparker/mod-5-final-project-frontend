@@ -15,7 +15,6 @@ class LoginForm extends Component {
 
   handleLogin = (e) => {
     e.preventDefault()
-    console.log(this.props.history);
     this.props.loginUser(this.state.username.toLowerCase(), this.state.password)
     // .then(this.props.history.push('/users/profile'))
   }
@@ -37,7 +36,6 @@ class LoginForm extends Component {
   }
 
   render() {
-    console.log(this.props.match);
     return (
       <div id='login-container'>
         <form id="login-form">
