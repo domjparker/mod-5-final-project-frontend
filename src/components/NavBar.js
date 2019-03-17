@@ -14,10 +14,10 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 class NavBar extends Component {
   state = {
     value: 'home',
-  };
+  }
 
   handleChange = (event, value) => {
-   this.setState({ value });
+   this.setState({ value })
   }
 
   handleLogout = () => {
