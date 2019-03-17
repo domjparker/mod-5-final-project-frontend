@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { postLike } from '../store'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 
@@ -10,10 +11,25 @@ class PhotoBar extends Component {
   }
 
   handlePhotoLike = () => {
-    console.log('LIKED PHOTO!', this.state.currentUserLikedPhoto)
+    console.log('PHOTO ID', this.props.selectedPhoto.id)
+    console.log('Current User ID', this.props.currentUser.id)
     this.setState({
       currentUserLikedPhoto: !this.state.currentUserLikedPhoto
     })
+  }
+
+  componentDidUpdate(){
+    console.log('MOUNTED')
+    if (this.props.selectedPhoto.likes){
+      let like = this.props.selectedPhoto.likes.filter((like) => { return like.user_id === this.props.currentUser.id})
+      console.log(like)
+    }
+      // if(like.user_id === this.props.currentUser.id){
+      //   console.log('CURRENT USER LIKES PHOTO')
+      // }
+      // else {
+      //   console.log('CURRENT USER DOES NOT LIKE PHOTO')
+      // }
   }
 
   render(){
@@ -28,12 +44,15 @@ class PhotoBar extends Component {
 
 const mapStateToProps = (state) => {
   return{
-    selectedPhoto: state.photos.selectedPhoto
+    selectedPhoto: state.photos.selectedPhoto,
+    currentUser: state.auth.currentUser
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    postLike: (photoId, userId) => dispatch(postLike(photoId, userId))
+  }
+}
 
-export default withRouter(connect(mapStateToProps)(PhotoBar))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PhotoBar))

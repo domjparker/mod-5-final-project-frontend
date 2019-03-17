@@ -7,6 +7,7 @@ const BASE_URL = 'http://localhost:3000'
 const setCurrentUserPhotos = (photos) => ({ type: 'SET_CURRENTUSER_PHOTOS', payload: photos })
 const setUserProfile = (user) => ({ type: 'SET_USER_PROFILE', payload: user })
 const addPhoto = (photo) => ({ type: 'ADD_PHOTO', payload: photo })
+const addLike = (like) => ({ type: 'ADD_LIKE', payload: like })
 const setSelectedPhotoAndUser = (photoAndUser) => ({ type: 'SET_SELECTED_PHOTO_AND_USER', payload: photoAndUser })
 export const setSelectedPhoto = (photo) => ({ type: 'SET_SELECTED_PHOTO', payload: photo })
 // export const selectHobbit = (hobbit) => ({type: 'SELECT_HOBBIT', payload: hobbit})
@@ -41,6 +42,23 @@ export const postPhoto = (photo) => {
     return fetch(`${BASE_URL}/photos`, options)
       .then(r => r.json())
       .then(photo => dispatch(addPhoto(photo)))
+      .catch(console.error)
+  }
+}
+
+export const postLike = (photoId, userId) => {
+  // console.log('Photo ID', photoID)
+  // console.log('User ID', userID)
+  return (dispatch) => {
+    const options = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
+      body: JSON.stringify({photoId: photoId, userId: userId})
+    }
+    return fetch(`${BASE_URL}/likes`, options)
+      .then(r => r.json())
+      .then(like => console.log(like))
+      // .then(photo => dispatch(addPhoto(photo)))
       .catch(console.error)
   }
 }
